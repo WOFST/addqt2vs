@@ -49,7 +49,7 @@ workspace "addqt2vs"
 	
 project("addqt2vs")
 	kind "ConsoleApp"
-	targetname "addqt2vs"
+	targetname "addqt5tovs"
 	
 	includedirs
 	{
