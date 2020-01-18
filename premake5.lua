@@ -3,8 +3,9 @@ flags
 	"MultiProcessorCompile"
 }
 
+local build_location = "build".._ACTION
 workspace "addqt2vs"
-	location "build"
+	location(build_location)
 	targetdir "bin"
 	configurations {"Debug", "Release"}
 	platforms { "Win32", "x64"}
@@ -14,6 +15,9 @@ workspace "addqt2vs"
 	implibdir "$(SolutionDir)../lib"
 	objdir "$(SolutionDir)obj/%{prj.name}/%{cfg.platform}/%{cfg.buildcfg}"
 	
+	filter "system:Windows"
+      systemversion "latest" -- To use the latest version of the SDK available
+	  
 	includedirs
 	{
 		"./3rd/boost/include",
@@ -23,14 +27,14 @@ workspace "addqt2vs"
 	filter "configurations:Release" 
 		runtime "Release"
 		optimize "Speed"
-		flags {"Symbols"}
+		symbols "On"
 	filter {}
 
 	filter "configurations:Debug" 
 		defines {"_DEBUG", "DEBUG"}
 		runtime "Debug"
 		optimize "Off"
-		flags {"Symbols"}
+		symbols "On"
 	filter {}
 		
 	filter { "platforms:x64" }	
@@ -69,36 +73,36 @@ project("addqt2vs")
 	filter {"Debug", "platforms:Win32"}
 		links
 		{
-			"libboost_filesystem-vc120-mt-gd-x32-1_70.lib",
-			"libboost_regex-vc120-mt-gd-x32-1_70.lib",
-			"libboost_program_options-vc120-mt-gd-x32-1_70.lib",
+			"libboost_filesystem-vc141-mt-gd-x32-1_70.lib",
+			"libboost_regex-vc141-mt-gd-x32-1_70.lib",
+			"libboost_program_options-vc141-mt-gd-x32-1_70.lib",
 		}
 	filter {}
 	
 	filter {"Debug", "platforms:x64"}
 		links
 		{
-			"libboost_filesystem-vc120-mt-gd-x64-1_70.lib",
-			"libboost_regex-vc120-mt-gd-x64-1_70.lib",
-			"libboost_program_options-vc120-mt-gd-x64-1_70.lib",
+			"libboost_filesystem-vc141-mt-gd-x64-1_70.lib",
+			"libboost_regex-vc141-mt-gd-x64-1_70.lib",
+			"libboost_program_options-vc141-mt-gd-x64-1_70.lib",
 		}
 	filter {}
 		
 	filter {"Release", "platforms:Win32"}
 		links
 		{
-			"libboost_filesystem-vc120-mt-x32-1_70.lib",
-			"libboost_regex-vc120-mt-x32-1_70.lib",
-			"libboost_program_options-vc120-mt-x32-1_70.lib",
+			"libboost_filesystem-vc141-mt-x32-1_70.lib",
+			"libboost_regex-vc141-mt-x32-1_70.lib",
+			"libboost_program_options-vc141-mt-x32-1_70.lib",
 		}
 	filter {}
 	
 	filter {"Release", "platforms:x64"}
 		links
 		{
-			"libboost_filesystem-vc120-mt-x64-1_70.lib",
-			"libboost_regex-vc120-mt-x64-1_70.lib",
-			"libboost_program_options-vc120-mt-x64-1_70.lib",
+			"libboost_filesystem-vc141-mt-x64-1_70.lib",
+			"libboost_regex-vc141-mt-x64-1_70.lib",
+			"libboost_program_options-vc141-mt-x64-1_70.lib",
 		}
 	filter {}
 		
