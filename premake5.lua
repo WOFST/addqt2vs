@@ -3,7 +3,7 @@ flags
 	"MultiProcessorCompile"
 }
 
-local build_location = "build".._ACTION
+local build_location = "build-".._ACTION
 workspace "addqt2vs"
 	location(build_location)
 	targetdir "bin"
